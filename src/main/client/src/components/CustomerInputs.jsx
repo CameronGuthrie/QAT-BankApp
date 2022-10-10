@@ -62,7 +62,7 @@ const CustomerInputs = ({ createNew, customerId }) => {
           placeOfBirth: document.getElementById("pob-input").value,
         };
         axios
-          .post("http://localhost:9002/customer/create", customer)
+          .post(`${process.env.REACT_APP_API_ROOT_URL}/customer/create`, customer)
           .then((res) => {
             setCustomerCreated(true);
             setPopUpContent(
@@ -105,7 +105,7 @@ const CustomerInputs = ({ createNew, customerId }) => {
           email: document.getElementById("email-input").value,
         };
         axios
-          .put("http://localhost:9002/customer/update", customerUpdate)
+          .put(`${process.env.REACT_APP_API_ROOT_URL}/customer/update`, customerUpdate)
           .then(() => {
             setCustomerUpdated(true);
             setPopUpContent(
@@ -126,7 +126,7 @@ const CustomerInputs = ({ createNew, customerId }) => {
 
   const deleteCustomer = () => {
     axios
-      .delete(`http://localhost:9002/customer/delete/${customerData.id}`)
+      .delete(`{process.env.REACT_APP_API_ROOT_URL}/${customerData.id}`)
       .then((res) => {
         console.log(res);
         setCustomerDeleted(true);

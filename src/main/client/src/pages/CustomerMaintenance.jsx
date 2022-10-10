@@ -4,10 +4,12 @@ import CustomerInputs from "../components/CustomerInputs";
 
 const CustomerMaintenance = () => {
   const { id } = useParams();
+  return(
   <div className="content-container">
     <h2>Update Customer</h2>
     {<CustomerInputs createNew={false} customerId={id} />}
-  </div>;
+  </div>
+  );
 };
 
 export default CustomerMaintenance;

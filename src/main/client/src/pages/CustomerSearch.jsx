@@ -102,7 +102,7 @@ const CustomerSearch = () => {
 
   const searchAll = () => {
     window.confirm("Are you sure you want to search all customers? This could cause hardware issues.") &&
-      axios.get("http://localhost:9002/customer/findAll").then((res) => {
+      axios.get(`${process.env.REACT_APP_API_ROOT_URL}/customer/findAll`).then((res) => {
         populateTable(res.data);
         setSearchError(<></>);
       });
@@ -115,7 +115,7 @@ const CustomerSearch = () => {
       const searchParams = inputBox.getAttribute("id").split("-")[0];
       console.log(inputBox.getAttribute("id"));
       axios
-        .post("http://localhost:9002/customer/filter", {
+        .post(`${process.env.REACT_APP_API_ROOT_URL}/customer/filter`, {
           account_nr: searchParams === "account" ? inputValue : "",
           customer_nr: searchParams === "customer" ? inputValue : "",
           surname: searchParams === "surname" ? inputValue : "",
